@@ -7,9 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 import { useState } from "react"
 import AddNoteDialog from "@/components/AddEditNoteDialog"
+import ThemeToggleButton from "@/components/ThemeToggleButton"
+import {dark} from "@clerk/themes"
+import {useTheme} from "next-themes"
 
 const NavBar = () => {
   const [showAddEditNoteDialog, setShowAddEditNoteDialog] = useState(false)
+  const {theme} = useTheme()
+
 
   return (
     <>
@@ -22,9 +27,11 @@ const NavBar = () => {
           <div className="flex items-center gap-2">
             <UserButton afterSignOutUrl="/"
               appearance={{
+                baseTheme: theme === "dark" ? dark : undefined,
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
+            <ThemeToggleButton />
             <Button onClick={() => setShowAddEditNoteDialog(true)}>
               <Plus size={20} className='mr-2' />
               Add Note
