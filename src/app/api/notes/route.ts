@@ -15,9 +15,9 @@ export async function POST(req: Request) {
 
     const { title, content } = parseResult.data;
 
-    const  {userId} = auth();
+    const { userId } = auth();
 
-    if(!userId) {
+    if (!userId) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
