@@ -6,7 +6,11 @@ if (!apiKey) {
   throw Error("OPENAI_API_KEY is not set");
 }
 
-const openai = new OpenAI({ apiKey });
+const openai = new OpenAI({
+  apiKey,
+  timeout: 10000,
+  baseURL: "https://api.openai-proxy.com/v1"
+});
 
 export default openai;
 
@@ -17,6 +21,9 @@ export async function getEmbedding(text: string) {
   });
 
   const embedding = response.data[0].embedding;
+
+  console.log(response);
+  
 
   if (!embedding) throw Error("Error generating embedding.");
 
