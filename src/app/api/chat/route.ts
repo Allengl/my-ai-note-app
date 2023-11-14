@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     // 权重节点索引
     const vectoryQueryResponse = await notesIndex.query({
       vector: embedding,
-      topK: 1,
+      topK: 4,
       filter: { userId }
     })
 
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
 
     const systemMessage: ChatCompletionMessage = {
-      role: "system",
+      role: "assistant",
       content:
         "You are an intelligent note-taking app. You answer the user's question based on their existing notes." +
         "the relevant notes for this query are:\n" +
