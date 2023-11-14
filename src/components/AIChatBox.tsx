@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { XCircle } from 'lucide-react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
+import { Message } from 'ai'
 
 interface AIChatBoxProps {
   open: boolean,
@@ -27,7 +28,11 @@ const AIChatBox: FC<AIChatBoxProps> = ({ open, onClose }) => {
         <XCircle size={30} />
       </button>
       <div className='flex h-[600px] flex-col rounded bg-background border shadow-xl'>
-        <div className='h-full'>Messages</div>
+        <div className='h-full'>
+          {messages.map((message) => (
+            <ChatMessage message={message} key={message.id} />
+          ))}
+        </div>
         <form onSubmit={handleSubmit} className='m-3 flex gap-1'>
           <Input
             value={input}
@@ -42,5 +47,20 @@ const AIChatBox: FC<AIChatBoxProps> = ({ open, onClose }) => {
     </div>
   )
 }
+
+
+const ChatMessage = ({ message: { role, content } }: { message: Message }) => {
+  return (
+    <div className='mb-3'>
+      <div>
+        {role}
+      </div>
+      <div>
+        {content}
+      </div>
+    </div>
+  )
+}
+
 
 export default AIChatBox
