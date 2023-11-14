@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     );
     const { userId } = auth();
 
-    // 权重节点索引
+    // 权重节点索引 //
     const vectoryQueryResponse = await notesIndex.query({
       vector: embedding,
       topK: 4,
