@@ -1,38 +1,44 @@
-'use client'
-import React, { useState } from 'react'
-import { Note as NoteModel } from "@prisma/client"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
-import AddEditNoteDialog from './AddEditNoteDialog'
+"use client";
+
+import { Note as NoteModel } from "@prisma/client";
+import { useState } from "react";
+import AddEditNoteDialog from "./AddEditNoteDialog";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 
 interface NoteProps {
-  note: NoteModel
+  note: NoteModel;
 }
 
-const Note = ({ note }: NoteProps) => {
-  const [showEditDialog, setShowEditDialog] = useState(false)
+export default function Note({ note }: NoteProps) {
+  const [showEditDialog, setShowEditDialog] = useState(false);
 
-  const wasUpdated = note.updateAt > note.createAt
+  const wasUpdated = note.updatedAt > note.createdAt;
 
   const createdUpdatedAtTimestamp = (
-    wasUpdated ? note.updateAt : note.createAt
+    wasUpdated ? note.updatedAt : note.createdAt
   ).toDateString();
 
   return (
     <>
-      <Card className='cursor-pointer transition-shadow hover:shadow-lg'
+      <Card
+        className="cursor-pointer transition-shadow hover:shadow-lg"
         onClick={() => setShowEditDialog(true)}
       >
         <CardHeader>
           <CardTitle>{note.title}</CardTitle>
           <CardDescription>
             {createdUpdatedAtTimestamp}
-            {wasUpdated && " {updated} "}
+            {wasUpdated && " (updated)"}
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className='whitespace-pre-line'>
-            {note.content}
-          </p>
+          <p className="whitespace-pre-line">{note.content}</p>
         </CardContent>
       </Card>
       <AddEditNoteDialog
@@ -41,7 +47,5 @@ const Note = ({ note }: NoteProps) => {
         noteToEdit={note}
       />
     </>
-  )
+  );
 }
-
-export default Note
