@@ -45,7 +45,7 @@ export async function GET(req: Request) {
     };
 
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "deepseek-chat",
       stream: true,
       messages: [systemMessage, ...messagesTruncated],
     });
