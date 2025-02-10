@@ -27,7 +27,7 @@ export async function GET(req: Request) {
     const relevantNotes = await prisma.note.findMany({
       where: {
         id: {
-          in: vectorQueryResponse.matches.map((match) => match.id),
+          in: vectorQueryResponse.matches.map((match) => match.id.toString()),
         },
       },
     });
