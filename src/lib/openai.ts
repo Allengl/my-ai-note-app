@@ -8,7 +8,7 @@ if (!apiKey) {
 
 const openai = new OpenAI({
   apiKey,
-  timeout: 100000,
+  timeout: 10000,
   baseURL: "https://api.deepseek.com"
 
 });
