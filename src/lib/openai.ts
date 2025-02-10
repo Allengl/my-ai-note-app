@@ -8,8 +8,8 @@ if (!apiKey) {
 
 const openai = new OpenAI({
   apiKey,
-  timeout: 10000,
-  baseURL: "https://api.openai-proxy.com/v1"
+  timeout: 100000,
+  baseURL: "https://api.deepseek.com"
 });
 
 export default openai;

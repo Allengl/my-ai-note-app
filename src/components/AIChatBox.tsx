@@ -7,6 +7,10 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
+
 
 interface AIChatBoxProps {
   open: boolean;
@@ -126,7 +130,7 @@ function ChatMessage({
           isAiMessage ? "bg-background" : "bg-primary text-primary-foreground",
         )}
       >
-        {content}
+        <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
       </p>
       {!isAiMessage && user?.imageUrl && (
         <Image
