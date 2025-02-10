@@ -9,8 +9,7 @@ if (!apiKey) {
 const openai = new OpenAI({
   apiKey,
   timeout: 10000,
-  baseURL: "https://api.deepseek.com"
-
+  baseURL: "https://api.xeduapi.com/v1",
 });
 
 export default openai;

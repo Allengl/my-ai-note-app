@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ChatCompletionMessage } from "openai/resources/index.mjs";
 
-export async function GET(req: Request) {
+export async function GET(req: Request) { 
   try {
     const body = await req.json();
     const messages: ChatCompletionMessage[] = body.messages;
@@ -45,7 +45,7 @@ export async function GET(req: Request) {
     };
 
     const response = await openai.chat.completions.create({
-      model: "deepseek-chat",
+      model: "gpt-3.5-turbo",
       stream: true,
       messages: [systemMessage, ...messagesTruncated],
     });
