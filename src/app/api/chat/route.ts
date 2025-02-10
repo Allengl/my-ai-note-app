@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ChatCompletionMessage } from "openai/resources/index.mjs";
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
   try {
     const body = await req.json();
     const messages: ChatCompletionMessage[] = body.messages;
