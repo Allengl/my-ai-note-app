@@ -1,7 +1,7 @@
 import { notesIndex } from "@/lib/db/pinecone";
 import prisma from "@/lib/db/prisma";
 import openai, { getEmbedding } from "@/lib/openai";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ChatCompletionMessage } from "openai/resources/index.mjs";
 
@@ -16,7 +16,7 @@ export async function GET(req: Request) {
       messagesTruncated.map((message) => message.content).join("\n"),
     );
 
-    const { userId } = auth();
+    const { userId } = await auth();
 
     const vectorQueryResponse = await notesIndex.query({
       vector: embedding,
@@ -27,7 +27,7 @@ export async function GET(req: Request) {
     const relevantNotes = await prisma.note.findMany({
       where: {
         id: {
-          in: vectorQueryResponse.matches.map((match) => match.id.toString()),
+          in: vectorQueryResponse.matches.map((match) => match.id),
         },
       },
     });

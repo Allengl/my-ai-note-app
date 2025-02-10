@@ -10,8 +10,8 @@
     "vercel-build": "prisma generate && next build"
   },
   "dependencies": {
-    "@clerk/nextjs": "4.26.1",
-    "@clerk/themes": "1.7.9",
+    "@clerk/nextjs": "^6.11.1",
+    "@clerk/themes": "^2.2.16",
     "@hookform/resolvers": "3.3.2",
     "@pinecone-database/pinecone": "1.1.2",
     "@prisma/client": "5.9.1",
@@ -23,7 +23,7 @@
     "clsx": "2.0.0",
     "eslint-config-prettier": "9.0.0",
     "lucide-react": "0.292.0",
-    "next": "14.0.2",
+    "next": "^15.1.6",
     "next-themes": "0.2.1",
     "openai": "4.17.4",
     "prettier": "3.1.0",
