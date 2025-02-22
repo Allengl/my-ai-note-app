@@ -13,7 +13,7 @@
     "@clerk/nextjs": "^6.11.1",
     "@clerk/themes": "^2.2.16",
     "@hookform/resolvers": "3.3.2",
-    "@pinecone-database/pinecone": "1.1.2",
+    "@pinecone-database/pinecone": "5.0.2",
     "@prisma/client": "5.9.1",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-label": "2.0.2",

@@ -8,6 +8,7 @@ if (!apiKey) {
 
 const pinecone = new Pinecone({
   apiKey,
+  environment: "us-east1-gcp",
 });
 
 export const notesIndex = pinecone.Index("nextjs-ai-note-app");
